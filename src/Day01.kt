@@ -1,7 +1,7 @@
 fun main() {
   fun part1(input: List<String>): Int {
     var maxCalories = 0
-    (input + "end").runningFold(0) { currentElfCalories, calLine ->
+    (input + "end").fold(0) { currentElfCalories, calLine ->
       calLine.toIntOrNull()?.let { currentElfCalories + it }
           ?: run {
             if (currentElfCalories > maxCalories) {
@@ -18,7 +18,7 @@ fun main() {
     var topCalories = 0
     var secondCalories = 0
     var thirdCalories = 0
-    (input + "end").runningFold(0) { currentElfCalories, calLine ->
+    (input + "end").fold(0) { currentElfCalories, calLine ->
       calLine.toIntOrNull()?.let { currentElfCalories + it }
           ?: run {
             when {
