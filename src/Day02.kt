@@ -81,20 +81,20 @@ private sealed class RPS(val points: Int) {
 fun main() {
 
   fun part1(input: List<String>): Int =
-      input.fold(0) { points, line ->
+      input.sumOf { line ->
         val moves = line.mapNotNull { RPS.fromChar(it) }
         check(moves.size == 2)
-        points + moves[1].totalPoints(moves[0])
+        moves[1].totalPoints(moves[0])
       }
 
   fun part2(input: List<String>): Int =
-      input.fold(0) { points, line ->
+      input.sumOf { line ->
         val moves = line.toCharArray().filter { it.isLetter() }
         check(moves.size == 2)
-        val opponentMove = RPS.fromChar(moves[0]) ?: return@fold points
-        val decoded = Decoded.fromChar(moves[1]) ?: return@fold points
+        val opponentMove = RPS.fromChar(moves[0]) ?: return@sumOf 0
+        val decoded = Decoded.fromChar(moves[1]) ?: return@sumOf 0
 
-        points + opponentMove.decode(decoded)
+        opponentMove.decode(decoded)
       }
 
   // test if implementation meets criteria from the description, like:
