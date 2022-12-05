@@ -23,7 +23,7 @@ fun main() {
           .count { it }
 
   val testInput = readInput("Day04_test")
-  check(part1(testInput)== 2)
+  check(part1(testInput) == 2)
   check(part2(testInput) == 4)
   //
   val input = readInput("Day04")
